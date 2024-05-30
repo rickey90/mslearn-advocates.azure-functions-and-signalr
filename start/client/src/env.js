@@ -1,0 +1,1 @@
+export const BACKEND_URL="https://api-rpatel.azurewebsites.net";
