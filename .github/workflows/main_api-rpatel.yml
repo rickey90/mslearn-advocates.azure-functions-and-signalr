@@ -12,7 +12,6 @@ on:
 env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '20.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
-  PACKAGE_PATH: 'start/server'
 
 jobs:
   build:
@@ -29,7 +28,7 @@ jobs:
       - name: 'Resolve Project Dependencies Using Npm'
         shell: bash
         run: |
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/${{ env.PACKAGE_PATH }}'
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
           npm run build --if-present
           npm run test --if-present
@@ -65,9 +64,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_394CF25330624F52A25AB8067741AF54 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2AF9966C39C1433DB0E7BB02EA1B3D45 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_24FCE8F5B45C4DC8A8685A224B9B94AE }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CC3A898D8EF94D4DB6CF76190DD8A925 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_95A123E1C6994CF38C4348C48FA62E94 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CE9FBE58015440389FB6BB5F876222A1 }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
