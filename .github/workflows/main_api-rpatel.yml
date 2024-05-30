@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Server
+name: Build and deploy Node.js project to Azure Function App - api-rpatel
 
 on:
   push:
@@ -12,7 +12,6 @@ on:
 env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '20.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
-  PACKAGE_PATH: 'start/server'
 
 jobs:
   build:
@@ -29,7 +28,7 @@ jobs:
       - name: 'Resolve Project Dependencies Using Npm'
         shell: bash
         run: |
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/${{ env.PACKAGE_PATH }}'
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
           npm run build --if-present
           npm run test --if-present
@@ -65,9 +64,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FD19BCD8694B4459B4F19AE6CDAC348C }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D49250D088C34703881EDD2ADBC342AB }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_41F5D69E808B44BEA1171538C6136801 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_394CF25330624F52A25AB8067741AF54 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2AF9966C39C1433DB0E7BB02EA1B3D45 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_24FCE8F5B45C4DC8A8685A224B9B94AE }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
